@@ -3,25 +3,234 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pro Water Tech</title>
+  <title>Prowater Technologies, Inc. | Water and Wastewater Treatment, Philippines</title>
+  <meta name="description" content="Prowater Technologies, Inc. designs and builds sewage treatment plants and provides water treatment, wastewater treatment and descaling services in the Philippines. Based in Mandaluyong City since 2013.">
+  <meta property="og:title" content="Prowater Technologies, Inc.">
+  <meta property="og:description" content="Water and wastewater treatment specialists in Mandaluyong City, Metro Manila.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
   <style>
-    :root { --bg: #ffffff; --fg: #1a2b3c; --accent: #0077b6; }
+    :root {
+      --paper: #f5f8f7;
+      --ink: #12313a;
+      --ink-soft: #4a6670;
+      --pipe: #0a7c86;
+      --clear: #8fd3e0;
+      --rule: #cfdcdb;
+      --amber: #c98a00;
+      --card: #ffffff;
+    }
     @media (prefers-color-scheme: dark) {
-      :root { --bg: #0f1a24; --fg: #e6eef5; --accent: #48cae4; }
+      :root {
+        --paper: #0c1f25;
+        --ink: #e4eff0;
+        --ink-soft: #9db5ba;
+        --pipe: #3fb8c2;
+        --clear: #9fe1ec;
+        --rule: #24414a;
+        --amber: #e6b33a;
+        --card: #112a32;
+      }
     }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     body {
-      margin: 0; min-height: 100vh; display: grid; place-items: center;
-      background: var(--bg); color: var(--fg);
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      padding: 0 16px; text-align: center;
+      margin: 0; background: var(--paper); color: var(--ink);
+      font-family: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-size: 1.0625rem; line-height: 1.55;
     }
-    h1 { color: var(--accent); margin-bottom: 0.25em; }
+    a { color: var(--pipe); }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    header.site { border-bottom: 1px solid var(--rule); }
+    header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 18px; padding-bottom: 18px; }
+    .brand { font-weight: 800; font-stretch: 112%; font-size: 1.15rem; text-decoration: none; color: var(--ink); letter-spacing: -0.01em; }
+    .brand span { font-weight: 400; color: var(--ink-soft); }
+    nav.site a { color: var(--ink); text-decoration: none; margin-left: 22px; font-size: 0.95rem; }
+    nav.site a:hover { color: var(--pipe); }
+    @media (max-width: 640px) { nav.site { display: none; } }
+
+    /* Hero */
+    .hero { padding: 72px 0 40px; }
+    .hero h1 {
+      font-stretch: 68%; font-weight: 800; line-height: 0.95; letter-spacing: -0.02em;
+      font-size: clamp(2.6rem, 7.5vw, 5.6rem); margin: 0 0 24px; max-width: 14ch;
+    }
+    .hero p.lede { font-size: 1.2rem; max-width: 56ch; color: var(--ink-soft); margin: 0 0 32px; }
+    .btn {
+      display: inline-block; padding: 14px 22px; border-radius: 4px; font-weight: 600;
+      text-decoration: none; background: var(--pipe); color: #fff;
+    }
+    .btn.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); margin-left: 10px; }
+    @media (max-width: 480px) { .btn.ghost { margin: 10px 0 0; } }
+
+    /* Process line: the one signature element */
+    .process { margin: 56px 0 0; overflow-x: auto; }
+    .process svg { display: block; min-width: 760px; width: 100%; height: auto; }
+    .process .pipe { stroke: var(--pipe); stroke-width: 6; fill: none; stroke-linecap: round; }
+    .process .flow { stroke: var(--clear); stroke-width: 2; fill: none; stroke-dasharray: 6 14; animation: flow 1.6s linear infinite; }
+    .process .unit { fill: var(--card); stroke: var(--ink); stroke-width: 1.5; }
+    .process .lbl { fill: var(--ink); font: 600 14px "Archivo", sans-serif; }
+    .process .sub { fill: var(--ink-soft); font: 400 12px "Archivo", sans-serif; }
+    @keyframes flow { to { stroke-dashoffset: -40; } }
+    @media (prefers-reduced-motion: reduce) { .process .flow { animation: none; } }
+
+    /* Sections */
+    section { padding: 72px 0; border-top: 1px solid var(--rule); }
+    h2 { font-stretch: 75%; font-weight: 800; font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1; margin: 0 0 16px; letter-spacing: -0.01em; }
+    .intro { max-width: 60ch; color: var(--ink-soft); margin: 0 0 40px; }
+
+    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0; border-top: 2px solid var(--ink); }
+    .svc { padding: 24px 24px 28px 0; border-bottom: 1px solid var(--rule); }
+    .svc h3 { margin: 0 0 8px; font-size: 1.15rem; }
+    .svc p { margin: 0; color: var(--ink-soft); max-width: 46ch; }
+
+    .about { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
+    @media (max-width: 800px) { .about { grid-template-columns: 1fr; } }
+    .about p { max-width: 60ch; }
+    .facts { margin: 0; border-left: 4px solid var(--pipe); padding-left: 24px; }
+    .facts div { padding: 10px 0; border-bottom: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 16px; }
+    .facts dt { color: var(--ink-soft); }
+    .facts dd { margin: 0; font-weight: 600; text-align: right; }
+
+    .contact { background: var(--ink); color: var(--paper); border-top: none; }
+    .contact h2 { color: var(--paper); }
+    .contact .intro { color: color-mix(in srgb, var(--paper) 75%, transparent); }
+    .contact .btn { background: var(--clear); color: #0c1f25; }
+    .contact .btn.ghost { background: transparent; color: var(--paper); border-color: var(--paper); }
+    .contact ul { list-style: none; padding: 0; margin: 32px 0 0; }
+    .contact li { margin: 6px 0; }
+    .contact a { color: var(--clear); }
+
+    footer { padding: 24px 0 40px; color: var(--ink-soft); font-size: 0.9rem; }
   </style>
 </head>
 <body>
-  <main>
-    <h1>Pro Water Tech</h1>
-    <p>Site coming soon.</p>
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="#top">Prowater <span>Technologies, Inc.</span></a>
+      <nav class="site" aria-label="Main">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="wrap hero">
+      <h1>Water and wastewater treatment that works.</h1>
+      <p class="lede">We design and build sewage treatment plants, treat process and utility water, and descale equipment for businesses across the Philippines. Based in Mandaluyong City since 2013.</p>
+      <a class="btn" href="https://www.facebook.com/prowatertechnologiesinc" target="_blank" rel="noopener">Message us on Facebook</a>
+      <a class="btn ghost" href="#services">See our services</a>
+
+      <figure class="process" aria-label="How a sewage treatment plant cleans water: inlet, screening, biological treatment by SBR or MBBR, clarification, then clean effluent.">
+        <svg viewBox="0 0 1060 170" role="img">
+          <path class="pipe" d="M10 80 H1050" />
+          <path class="flow" d="M10 80 H1050" />
+          <g>
+            <rect class="unit" x="60" y="40" width="150" height="80" rx="3"/>
+            <text class="lbl" x="135" y="76" text-anchor="middle">Inlet</text>
+            <text class="sub" x="135" y="96" text-anchor="middle">raw wastewater</text>
+          </g>
+          <g>
+            <rect class="unit" x="260" y="40" width="150" height="80" rx="3"/>
+            <text class="lbl" x="335" y="76" text-anchor="middle">Screening</text>
+            <text class="sub" x="335" y="96" text-anchor="middle">solids removed</text>
+          </g>
+          <g>
+            <rect class="unit" x="460" y="25" width="190" height="110" rx="3" style="stroke:var(--pipe);stroke-width:2.5"/>
+            <text class="lbl" x="555" y="72" text-anchor="middle">Biological treatment</text>
+            <text class="sub" x="555" y="94" text-anchor="middle">SBR or MBBR</text>
+          </g>
+          <g>
+            <rect class="unit" x="700" y="40" width="150" height="80" rx="3"/>
+            <text class="lbl" x="775" y="76" text-anchor="middle">Clarification</text>
+            <text class="sub" x="775" y="96" text-anchor="middle">sludge settles</text>
+          </g>
+          <g>
+            <rect class="unit" x="900" y="40" width="130" height="80" rx="3"/>
+            <text class="lbl" x="965" y="76" text-anchor="middle">Effluent</text>
+            <text class="sub" x="965" y="96" text-anchor="middle">safe to discharge</text>
+          </g>
+        </svg>
+      </figure>
+    </div>
+
+    <section id="services">
+      <div class="wrap">
+        <h2>What we do</h2>
+        <p class="intro">We combine chemical treatment expertise with proven treatment technologies to solve practical water problems, from a building's sewage to a plant's cooling system.</p>
+        <div class="services">
+          <div class="svc">
+            <h3>Sewage treatment plants (STP)</h3>
+            <p>Design and construction of STPs sized for your site, flow and discharge requirements.</p>
+          </div>
+          <div class="svc">
+            <h3>SBR and MBBR systems</h3>
+            <p>Sequencing batch reactor and moving bed biofilm reactor systems for reliable biological treatment.</p>
+          </div>
+          <div class="svc">
+            <h3>Wastewater treatment</h3>
+            <p>Treatment solutions that help commercial and industrial facilities meet effluent standards.</p>
+          </div>
+          <div class="svc">
+            <h3>Water treatment</h3>
+            <p>Chemical treatment programs for process, boiler and cooling water.</p>
+          </div>
+          <div class="svc">
+            <h3>Descaling with Rydlyme</h3>
+            <p>Removal of scale and mineral deposits from heat exchangers, chillers and other water-side equipment.</p>
+          </div>
+          <div class="svc">
+            <h3>Integrated solutions</h3>
+            <p>Products, services and system design brought together under one team.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about">
+        <div>
+          <h2>About us</h2>
+          <p>Prowater Technologies, Inc. is a chemical technology specialist in water and wastewater treatment operating in the Philippines. We pair technical expertise with advanced treatment technologies to create practical solutions to complex problems.</p>
+          <p>Our goal is simple: 100% customer satisfaction with our products, services and integrated solutions.</p>
+        </div>
+        <dl class="facts">
+          <div><dt>Founded</dt><dd>2013</dd></div>
+          <div><dt>Headquarters</dt><dd>Mandaluyong City, Metro Manila</dd></div>
+          <div><dt>Team</dt><dd>11–50 people</dd></div>
+          <div><dt>Focus</dt><dd>Water, wastewater, descaling</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <h2>Talk to us about your project</h2>
+        <p class="intro">Send us your site details, flow rate or the problem you're seeing, and we'll get back to you.</p>
+        <a class="btn" href="https://www.facebook.com/prowatertechnologiesinc" target="_blank" rel="noopener">Message us on Facebook</a>
+        <a class="btn ghost" href="https://www.linkedin.com/company/prowater-technologies-inc" target="_blank" rel="noopener">Find us on LinkedIn</a>
+        <ul>
+          <!-- TODO: add contact details from the Facebook page's About section -->
+          <!-- <li>Phone: <a href="tel:+63XXXXXXXXXX">+63 XXX XXX XXXX</a></li> -->
+          <!-- <li>Email: <a href="mailto:info@example.com">info@example.com</a></li> -->
+          <!-- <li>Address: Street, Barangay, Mandaluyong City, Metro Manila</li> -->
+          <li>Mandaluyong City, Metro Manila, Philippines</li>
+        </ul>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="wrap">© <span id="yr">2026</span> Prowater Technologies, Inc.</div>
+  </footer>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
