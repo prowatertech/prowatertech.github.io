@@ -13,166 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --paper: #f5f7fb;
-      --ink: #142a52;
-      --ink-soft: #4b5b78;
-      --navy: #1b3366;
-      --green: #3f7a1f;
-      --lime: #8cc63f;
-      --rule: #d5dce8;
-      --card: #ffffff;
-      --on-navy: #ffffff;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --paper: #0b1730;
-        --ink: #e8eef8;
-        --ink-soft: #a3b2cc;
-        --navy: #132a57;
-        --green: #8cc63f;
-        --lime: #a6d65f;
-        --rule: #22365e;
-        --card: #11234a;
-      }
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-    body {
-      margin: 0; background: var(--paper); color: var(--ink);
-      font-family: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      font-size: 1.0625rem; line-height: 1.55;
-    }
-    a { color: var(--green); }
-    a:focus-visible, button:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
-    img { max-width: 100%; display: block; }
-    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-    @media (max-width: 480px) { .wrap { padding: 0 16px; } }
-
-    h1, h2, h3, .tag, .btn {
-      font-family: "Barlow Condensed", "Archivo", sans-serif; text-transform: uppercase;
-    }
-    .g { color: var(--green); }
-
-    /* Header */
-    header.site { background: var(--card); border-bottom: 4px solid var(--lime); }
-    header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 10px; padding-bottom: 10px; }
-    .brand { display: block; background: #fff; border-radius: 6px; padding: 4px 8px; }
-    .brand img { height: 56px; width: auto; }
-    @media (max-width: 480px) { .brand img { height: 44px; } }
-    nav.site a {
-      color: var(--ink); text-decoration: none; margin-left: 24px;
-      font: 700 1.1rem "Barlow Condensed", sans-serif; text-transform: uppercase; letter-spacing: 0.04em;
-    }
-    nav.site a:hover { color: var(--green); }
-    @media (max-width: 640px) { nav.site { display: none; } }
-
-    /* Hero */
-    .hero { padding-top: 64px; padding-bottom: 40px; }
-    .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
-    @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; gap: 32px; } }
-    .hero-photo { margin: 0; position: relative; }
-    .hero-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
-    .hero-photo::after { content: ""; position: absolute; left: -12px; bottom: -12px; width: 45%; height: 45%; border-left: 6px solid var(--lime); border-bottom: 6px solid var(--lime); border-radius: 0 0 0 10px; z-index: -1; }
-    .tag { font-weight: 700; letter-spacing: 0.45em; font-size: 1rem; margin: 0 0 18px; color: var(--ink); }
-    .hero h1 {
-      font-weight: 800; line-height: 0.92; letter-spacing: -0.005em;
-      font-size: clamp(2.8rem, 8vw, 6rem); margin: 0 0 24px; max-width: 13ch;
-    }
-    .hero h1 .g { display: block; }
-    .hero p.lede { font-size: 1.2rem; max-width: 56ch; color: var(--ink-soft); margin: 0 0 32px; }
-    .btn {
-      display: inline-block; padding: 12px 24px; border-radius: 4px; font-weight: 700; font-size: 1.2rem;
-      letter-spacing: 0.04em; text-decoration: none; background: var(--green); color: #fff;
-    }
-    @media (prefers-color-scheme: dark) { .btn { color: #0b1730; } }
-    .btn.ghost { background: transparent; color: var(--ink); border: 2px solid var(--ink); margin-left: 10px; }
-    @media (max-width: 480px) { .btn.ghost { margin: 10px 0 0; } }
-
-    /* Free assessment band */
-    .offer { background: var(--navy); color: var(--on-navy); border-top: none; padding: 0; }
-    .offer .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; padding-top: 28px; padding-bottom: 28px; }
-    .offer .free { font: 800 clamp(3rem, 8vw, 4.5rem)/0.9 "Barlow Condensed", sans-serif; color: var(--lime); }
-    .offer .what { font: 700 1.6rem/1.05 "Barlow Condensed", sans-serif; text-transform: uppercase; }
-    .offer .what span { color: var(--lime); display: block; }
-    .offer .btn { margin-left: auto; background: var(--lime); color: #0b1730; }
-    @media (max-width: 640px) { .offer .btn { margin-left: 0; } }
-
-    /* Process line */
-    .process { margin: 56px 0 0; overflow-x: auto; }
-    .process svg { display: block; min-width: 760px; width: 100%; height: auto; }
-    .process .pipe { stroke: var(--navy); stroke-width: 6; fill: none; stroke-linecap: round; }
-    .process .flow { stroke: var(--lime); stroke-width: 2; fill: none; stroke-dasharray: 6 14; animation: flow 1.6s linear infinite; }
-    .process .unit { fill: var(--card); stroke: var(--ink); stroke-width: 1.5; }
-    .process .lbl { fill: var(--ink); font: 700 17px "Barlow Condensed", sans-serif; text-transform: uppercase; }
-    .process .sub { fill: var(--ink-soft); font: 400 12px "Archivo", sans-serif; }
-    @keyframes flow { to { stroke-dashoffset: -40; } }
-    @media (prefers-reduced-motion: reduce) { .process .flow { animation: none; } }
-    @media (prefers-color-scheme: dark) { .process .pipe { stroke: #3a5a9c; } }
-
-    /* Sections */
-    section { padding: 72px 0; border-top: 1px solid var(--rule); }
-    h2 { font-weight: 800; font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 0.95; margin: 0 0 16px; }
-    .intro { max-width: 60ch; color: var(--ink-soft); margin: 0 0 40px; }
-
-    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .svc { background: var(--card); border: 1px solid var(--rule); border-top: 4px solid var(--navy); border-radius: 6px; overflow: hidden; }
-    .svc:nth-child(even) { border-top-color: var(--green); }
-    .svc img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
-    .svc .body { padding: 18px 20px 22px; }
-    .svc h3 { margin: 0 0 6px; font-size: 1.45rem; font-weight: 700; line-height: 1.05; color: var(--ink); }
-    .svc:nth-child(even) h3 { color: var(--green); }
-    .svc p { margin: 0; color: var(--ink-soft); max-width: 46ch; }
-
-    .about { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
-    @media (max-width: 800px) { .about { grid-template-columns: 1fr; } }
-    .about p { max-width: 60ch; }
-    .facts { margin: 0; border-left: 4px solid var(--lime); padding-left: 24px; }
-    .facts div { padding: 10px 0; border-bottom: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 16px; }
-    .facts dt { color: var(--ink-soft); }
-    .facts dd { margin: 0; font-weight: 600; text-align: right; }
-
-    .values { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 48px; }
-    .values div { background: var(--navy); color: var(--on-navy); border-radius: 8px; padding: 20px; }
-    .values h3 { margin: 0 0 4px; color: var(--lime); font-size: 1.4rem; }
-    .values p { margin: 0; font-size: 0.95rem; opacity: 0.88; }
-
-    .clients h3 { margin: 56px 0 20px; font-size: 1.5rem; display: flex; align-items: center; gap: 16px; }
-    .clients h3::after { content: ""; flex: 1; border-top: 1px solid var(--rule); }
-    .logos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); grid-auto-flow: dense; gap: 12px; }
-    .logos li { background: #fff; border: 1px solid var(--rule); border-radius: 6px; height: 84px; display: grid; place-items: center; padding: 8px; }
-    .logos li.wide { grid-column: span 2; }
-    .logos img { max-height: 64px; max-width: 100%; width: auto; object-fit: contain; }
-    @media (max-width: 480px) {
-      .logos { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-      .logos li { height: 68px; padding: 6px; }
-      .logos img { max-height: 52px; }
-    }
-
-    .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-    .gallery figure { margin: 0; }
-    .gallery img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; }
-    .gallery figcaption { font-size: 0.9rem; color: var(--ink-soft); margin-top: 6px; }
-    @media (max-width: 720px) { .gallery { grid-template-columns: 1fr 1fr; } }
-
-
-    .contact { background: var(--navy); color: var(--on-navy); border-top: 4px solid var(--lime); }
-    .contact h2 { color: var(--on-navy); }
-    .contact h2 .g { color: var(--lime); }
-    .contact .intro { color: rgba(255,255,255,0.8); }
-    .contact .btn { background: var(--lime); color: #0b1730; }
-    .contact .btn.ghost { background: transparent; color: #fff; border-color: #fff; }
-    .contact ul { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 8px; }
-    .contact li span { display: inline-block; min-width: 5.5em; color: rgba(255,255,255,0.7); }
-    .contact a { color: var(--lime); }
-
-    footer { padding: 24px 0 40px; color: var(--ink-soft); font-size: 0.9rem; }
-    footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
-    footer .sig { font: italic 800 1.4rem "Barlow Condensed", sans-serif; color: var(--ink); text-transform: none; }
-    footer .sig span { color: var(--green); }
-  </style>
+  <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
   <header class="site">
@@ -180,8 +21,10 @@
       <a class="brand" href="#top"><img src="images/logo-wide.png" alt="Prowater Technologies, Inc." width="477" height="173"></a>
       <nav class="site" aria-label="Main">
         <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#work">Our work</a>
+        <a href="stp.html">STP</a>
+        <a href="stp-maintenance.html">Maintenance</a>
+        <a href="water-vs-wastewater.html">Water vs wastewater</a>
+        <a href="about.html">About</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -253,6 +96,7 @@
             <div class="body">
               <h3>Sewage treatment plants (STP)</h3>
               <p>Design and construction of STPs sized for your site, flow and discharge requirements, using SBR and MBBR systems.</p>
+              <a class="more" href="stp.html">How an STP works &rarr;</a>
             </div>
           </div>
           <div class="svc">
@@ -260,6 +104,7 @@
             <div class="body">
               <h3>STP maintenance</h3>
               <p>Inspection, preventive maintenance and repairs that keep your plant efficient, compliant and running for the long term.</p>
+              <a class="more" href="stp-maintenance.html">Why maintenance matters &rarr;</a>
             </div>
           </div>
           <div class="svc">
@@ -267,6 +112,7 @@
             <div class="body">
               <h3>Water treatment</h3>
               <p>Filtration, softening and reverse osmosis systems, plus chemical programs for process, boiler and cooling water.</p>
+              <a class="more" href="water-vs-wastewater.html">Water vs wastewater treatment &rarr;</a>
             </div>
           </div>
           <div class="svc">
@@ -274,6 +120,7 @@
             <div class="body">
               <h3>Discharge permit processing</h3>
               <p>Help securing DENR and, where applicable, LLDA wastewater discharge permits.</p>
+              <a class="more" href="stp.html#permits">About DENR and LLDA permits &rarr;</a>
             </div>
           </div>
           <div class="svc">
@@ -281,6 +128,7 @@
             <div class="body">
               <h3>Sampling and characterization</h3>
               <p>Environmental sampling, monitoring and wastewater analysis that support effective treatment design.</p>
+              <a class="more" href="about.html#offer">All our services &rarr;</a>
             </div>
           </div>
           <div class="svc">
@@ -288,6 +136,7 @@
             <div class="body">
               <h3>Facility design and cost estimates</h3>
               <p>Efficient, cost-effective treatment facilities tailored to your operations, plus descaling with Rydlyme.</p>
+              <a class="more" href="about.html#offer">All our services &rarr;</a>
             </div>
           </div>
         </div>
@@ -301,6 +150,7 @@
             <h2>About <span class="g">us</span></h2>
             <p>Prowater Technologies, Inc. is the water and wastewater ecosolutions company. We are backed by 13 years of water and wastewater treatment expertise, delivering reliable clean water solutions across the Philippines.</p>
             <p>We serve the petroleum, energy, manufacturing, hospitality, healthcare, food and beverage, mining and government sectors.</p>
+            <p><a href="about.html">More about Prowater &rarr;</a></p>
           </div>
           <dl class="facts">
             <div><dt>Founded</dt><dd>2013</dd></div>
@@ -318,31 +168,32 @@
         <div class="clients">
           <h3>Trusted by</h3>
           <ul class="logos">
-            <li><img src="images/clients/pldt-smart.png" alt="PLDT and Smart" loading="lazy"></li>
-            <li><img src="images/clients/toyota.png" alt="Toyota" loading="lazy"></li>
-            <li><img src="images/clients/marriott.png" alt="Marriott" loading="lazy"></li>
-            <li><img src="images/clients/raffles.png" alt="Raffles" loading="lazy"></li>
-            <li><img src="images/clients/fairmont-makati.png" alt="Fairmont Makati" loading="lazy"></li>
+            <li class="wide"><img src="images/clients/pldt.svg" alt="PLDT" loading="lazy"></li>
+            <li class="wide"><img src="images/clients/smart.svg" alt="Smart Communications" loading="lazy"></li>
+            <li class="wide"><img src="images/clients/toyota.svg" alt="Toyota" loading="lazy"></li>
+            <li><img src="images/clients/marriott.svg" alt="Marriott" loading="lazy"></li>
+            <li><img src="images/clients/raffles.svg" alt="Raffles" loading="lazy"></li>
+            <li class="wide"><img src="images/clients/fairmont-makati.svg" alt="Fairmont Makati" loading="lazy"></li>
             <li class="wide"><img src="images/clients/novotel.png" alt="Novotel Manila Araneta City" loading="lazy"></li>
-            <li><img src="images/clients/st-lukes.png" alt="St. Luke's Medical Center" loading="lazy"></li>
-            <li><img src="images/clients/nutriasia.png" alt="NutriAsia" loading="lazy"></li>
+            <li><img src="images/clients/st-lukes.svg" alt="St. Luke's Medical Center" loading="lazy"></li>
+            <li><img src="images/clients/nutriasia.svg" alt="NutriAsia" loading="lazy"></li>
             <li><img src="images/clients/pilmico-gerrys.png" alt="Pilmico and Gerry's Grill" loading="lazy"></li>
             <li><img src="images/clients/malampaya.png" alt="Malampaya" loading="lazy"></li>
+            <li class="wide"><img src="images/clients/mactan-cebu.svg" alt="Mactan-Cebu International Airport" loading="lazy"></li>
+            <li class="wide"><img src="images/clients/anya.png" alt="Anya Resort" loading="lazy"></li>
+            <li><img src="images/clients/pontefino.svg" alt="Pontefino Hotel" loading="lazy"></li>
+            <li><img src="images/clients/sam.png" alt="SAM Precious Metals" loading="lazy"></li>
             <li class="wide"><img src="images/clients/nz-creamery.png" alt="New Zealand Creamery" loading="lazy"></li>
             <li><img src="images/clients/farm-fresh.png" alt="Farm Fresh" loading="lazy"></li>
-            <li><img src="images/clients/anya.png" alt="Anya Resort" loading="lazy"></li>
-            <li><img src="images/clients/pontefino.png" alt="Pontefino Hotels" loading="lazy"></li>
-            <li><img src="images/clients/sam.png" alt="SAM Precious Metals" loading="lazy"></li>
-            <li><img src="images/clients/mactan-cebu.png" alt="Mactan Cebu" loading="lazy"></li>
             <li><img src="images/clients/subic-drydock.png" alt="Subic Drydock" loading="lazy"></li>
-            <li><img src="images/clients/piwad.png" alt="Pila Water District (PIWAD)" loading="lazy"></li>
-            <li class="wide"><img src="images/clients/muntinlupa.png" alt="City Government of Muntinlupa" loading="lazy"></li>
-            <li class="wide"><img src="images/clients/companies-house.png" alt="Companies House" loading="lazy"></li>
+            <li><img src="images/clients/piwad.png" alt="PIWAD water district" loading="lazy"></li>
+            <li class="wide"><img src="images/clients/companies-house.svg" alt="Companies House" loading="lazy"></li>
+            <li><img src="images/clients/muntinlupa.png" alt="City Government of Muntinlupa" loading="lazy"></li>
+            <li><img src="images/clients/gov-seal-2.svg" alt="City of Taguig" loading="lazy"></li>
+            <li><img src="images/clients/gov-seal-4.svg" alt="Quezon City" loading="lazy"></li>
+            <li><img src="images/clients/gov-seal-6.svg" alt="City of Calamba" loading="lazy"></li>
             <li><img src="images/clients/gov-seal-1.png" alt="Government client seal" loading="lazy"></li>
-            <li><img src="images/clients/gov-seal-2.png" alt="Government client seal" loading="lazy"></li>
-            <li><img src="images/clients/gov-seal-4.png" alt="Government client seal" loading="lazy"></li>
             <li><img src="images/clients/gov-seal-5.png" alt="Government client seal" loading="lazy"></li>
-            <li><img src="images/clients/gov-seal-6.png" alt="Government client seal" loading="lazy"></li>
           </ul>
         </div>
       </div>
