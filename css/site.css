@@ -135,6 +135,7 @@ h2 { font-weight: 800; font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 0.95;
 .logos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); grid-auto-flow: dense; gap: 12px; }
 .logos li { background: #fff; border: 1px solid var(--rule); border-radius: 6px; height: 84px; display: grid; place-items: center; padding: 8px; }
 .logos li.wide { grid-column: span 2; }
+.logos li.pilmico { background: #073b6c; }
 .logos img { width: 100%; height: 52px; object-fit: contain; }
 .logos li.wide img { height: 38px; }
 @media (max-width: 480px) {
