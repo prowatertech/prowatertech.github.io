@@ -1,0 +1,14 @@
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="{% if page.nav == 'home' %}#top{% else %}index.html#top{% endif %}"><img src="images/logo-wide.png" alt="Prowater Technologies, Inc. home" width="477" height="173"></a>
+    <nav class="site" aria-label="Main">
+      <a href="{% if page.nav == 'home' %}#services{% else %}index.html#services{% endif %}">Services</a>
+      <a href="{% if page.nav == 'home' %}#packages{% else %}index.html#packages{% endif %}">Packages</a>
+      <a href="stp.html"{% if page.nav == 'stp' %} aria-current="page"{% endif %}>STP</a>
+      <a href="stp-maintenance.html"{% if page.nav == 'maintenance' %} aria-current="page"{% endif %}>Maintenance</a>
+      <a href="water-vs-wastewater.html"{% if page.nav == 'water' %} aria-current="page"{% endif %}>Water vs wastewater</a>
+      <a href="about.html"{% if page.nav == 'about' %} aria-current="page"{% endif %}>About</a>
+      <a href="{% if page.nav == 'home' %}#contact{% else %}index.html#contact{% endif %}">Contact</a>
+    </nav>
+  </div>
+</header>
