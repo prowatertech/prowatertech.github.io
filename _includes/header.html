@@ -2,7 +2,7 @@
   <div class="wrap">
     <a class="brand" href="{% if page.nav == 'home' %}#top{% else %}index.html#top{% endif %}"><img src="images/logo-wide.png" alt="Prowater Technologies, Inc. home" width="477" height="173"></a>
     <nav class="site" aria-label="Main">
-      <a href="{% if page.nav == 'home' %}#services{% else %}index.html#services{% endif %}">Services</a>
+      <a href="services.html"{% if page.nav == 'services' %} aria-current="page"{% endif %}>Services</a>
       <a href="{% if page.nav == 'home' %}#packages{% else %}index.html#packages{% endif %}">Packages</a>
       <a href="stp.html"{% if page.nav == 'stp' %} aria-current="page"{% endif %}>STP</a>
       <a href="stp-maintenance.html"{% if page.nav == 'maintenance' %} aria-current="page"{% endif %}>Maintenance</a>
